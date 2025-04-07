@@ -1,4 +1,5 @@
 class Document < ApplicationRecord
   belongs_to :template
-  belongs_to :user
+
+  validates :title, :data, presence: true
 end
