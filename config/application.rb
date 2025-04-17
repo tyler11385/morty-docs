@@ -7,6 +7,10 @@ require "rails/all"
 Bundler.require(*Rails.groups)
 
 module MortyDocsApi
+  puts "Enum seen at top-level: #{ActiveRecord::Base.method(:enum).source_location rescue 'NOT FOUND'}"
+  puts "Enum seen in Module: #{Module.instance_method(:enum).source_location rescue 'NOT FOUND'}"
+  puts "Enum seen in Class: #{Class.instance_method(:enum).source_location rescue 'NOT FOUND'}"
+
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 8.0

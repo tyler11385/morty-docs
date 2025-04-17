@@ -1,7 +1,7 @@
 class Placeholder < ApplicationRecord
   belongs_to :template
 
-  enum placeholder_type: {
+  PLACEHOLDER_TYPES = {
     date: 0,
     datetime: 1,
     name: 2,
@@ -10,7 +10,11 @@ class Placeholder < ApplicationRecord
     number: 5,
     page_counter: 6,
     barcode: 7
-}
+  }.freeze
 
   validates :name, :placeholder_type, presence: true
+
+  def placeholder_type_name
+    PLACEHOLDER_TYPES.key(placeholder_type)
+  end
 end
